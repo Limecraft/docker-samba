@@ -14,8 +14,13 @@ docker run -d \
   -v ${GUEST_DIR}:/mnt/guest \
   -v ${SHARE_DIR}:/mnt/shared \
   -v ${HOME_DIR}:/home \
+  -p 135:135 \
+  -p 139:139 \
+  -p 445:445 \
   ewindisch/samba-smbd $@
 
 docker run -d \
   -v $PWD/etc/samba:/etc/samba \
+  -p 137:137 \
+  -p 138:138 \
   ewindisch/samba-nmbd $@
